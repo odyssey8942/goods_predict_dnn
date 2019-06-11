@@ -13,41 +13,6 @@ import chainer.functions as F
 import chainer.links as L
 import csv
 
-"""
-class LSTM(Chain):
-    def __init__(self, in_size, hidden_size, out_size):
-        # クラスの初期化
-        # :param in_size: 入力層のサイズ
-        # :param hidden_size: 隠れ層のサイズ
-        # :param out_size: 出力層のサイズ
-        super(LSTM, self).__init__(
-            xh = L.Linear(in_size, hidden_size),
-            hh = L.LSTM(hidden_size, hidden_size),
-            hy = L.Linear(hidden_size, out_size)
-        )
- 
-    def __call__(self, x, t=None, train=False):
-        # 順伝播の計算を行う関数
-        # :param x: 入力値
-        # :param t: 正解の予測値
-        # :param train: 学習かどうか
-        # :return: 計算した損失 or 予測値
-        x = Variable(x)
-        if train:
-            t = Variable(t)
-        h = self.xh(x)
-        h = self.hh(h)
-        y = self.hy(h)
-        if train:
-            return F.mean_squared_error(y, t)
-        else:
-            return y.data
- 
-    def reset(self):
-        # 勾配の初期化とメモリの初期化
-        self.cleargrads()
-        self.hh.reset_state()
-"""
 class Model(Chain):
     def __init__(self):
         super(Model, self).__init__(
