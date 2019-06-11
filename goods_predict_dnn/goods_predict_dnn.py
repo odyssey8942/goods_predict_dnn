@@ -17,13 +17,19 @@ class Model(Chain):
     def __init__(self):
         super(Model, self).__init__(
             l1=L.Linear(7,14),
-            l2=L.Linear(14,4),
-            l3=L.Linear(4,1),
+            l2=L.Linear(14,10),
+            l3=L.Linear(10,6),
+            l4=L.Linear(6,4),
+            l5=L.Linear(4,2),
+            l6=L.Linear(2,1),
         )
     def __call__(self, x):
         h = F.relu(self.l1(x))
         h = F.relu(self.l2(h))
-        return self.l3(h)
+        h = F.relu(self.l3(h))
+        h = F.relu(self.l4(h))
+        h = F.relu(self.l5(h))
+        return self.l6(h)
     
 
 
